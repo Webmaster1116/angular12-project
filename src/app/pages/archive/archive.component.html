@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <app-page-title title="Archive" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+  <div class="row">
+    <div class="col-xl-8">
+      <div class="card">
+          <div class="card-body">
+              <div class="float-end">
+                  <select class="form-select form-select-sm ms-2" (change)="getBalanceData($event)">
+                      <option value="march" selected>All</option>
+                      <option value="february">8W</option>
+                      <option value="january">4W</option>
+                      <option value="december">1W</option>
+                  </select>
+              </div>
+              <h4 class="card-title mb-3">Target Drive X</h4>
+
+              <div class="row" *ngFor="let data of walletBalanceData">
+                  <div class="col-lg-4">
+                      <div class="mt-4">
+                          <p>{{ data.text }}</p>
+                          <h4>{{ data.amount }}</h4>
+
+                          <p class="text-muted mb-4"> {{ data.subamount }} <i
+                                  class="mdi mdi-arrow-up ms-1 text-success"></i></p>
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div>
+                                      <p class="mb-2">Pending</p>
+                                      <h5>{{ data.income }}</h5>
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                  <div>
+                                      <p class="mb-2">Closed</p>
+                                      <h5>{{ data.expense }}</h5>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="mt-4">
+                              <a href="targetdrive" class="btn btn-primary btn-sm">View more <i
+                                      class="mdi mdi-arrow-right ms-1"></i></a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6">
+                      <div>
+                          <apx-chart class="apex-charts" dir="ltr" [series]="data.chartSeries"
+                              [chart]="walletRadialChart.chart" [colors]="walletRadialChart.colors"
+                              [stroke]="walletRadialChart.stroke" [plotOptions]="walletRadialChart.plotOptions"
+                              [legend]="walletRadialChart.legend" [labels]="walletRadialChart.labels">
+                          </apx-chart>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 align-self-center">
+                      <div *ngFor="let item of data.balancelist" class="mt-4 pt-2">
+                          <p class="mb-2"><i
+                                  class="mdi mdi-circle align-middle font-size-10 me-2 text-primary"></i> {{ item.text }}
+                          </p>
+                          <h5><span class="text-muted font-size-14">{{ item.amount }}</span></h5>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+     
+  </div>
+
+
+</div>

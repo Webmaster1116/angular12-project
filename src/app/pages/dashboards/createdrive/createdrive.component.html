@@ -1,0 +1,136 @@
+<div class="container-fluid">
+
+  <!-- start page title -->
+  <app-page-title title="Create A Target Drive" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <!-- end page title -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Create A Target Drive</h4>
+          <form class="outer-repeater">
+            <div data-repeater-list="outer-group" class="outer">
+              <div data-repeater-item class="outer">
+                <div class="row mb-4">
+                  <label for="taskname" class="col-form-label col-lg-2">Target Drive Name</label>
+                  <div class="col-lg-10">
+                    <input id="taskname" name="taskname" type="text" class="form-control"
+                      placeholder="Enter Target Drive Name...">
+                  </div>
+                </div>  
+                
+                <div class="row mb-4">
+                  <label for="taskname" class="col-form-label col-lg-2">Select Company</label>
+                  <div class="col-lg-10">
+                    <select class="form-select">
+                      <option>Select Company</option>
+                      <option>Company 1</option>
+                      <option>Company 2</option>
+                  </select>
+                  </div> 
+                </div>
+                
+                
+
+                <div class="row mb-4">
+                  <label class="col-form-label col-lg-2">Notes</label>
+                  <div class="col-lg-10">
+                    <ckeditor [editor]="Editor" data="<p>Content of the editor.</p>"></ckeditor>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label class="col-form-label col-lg-2">Date</label>
+                  <div class="col-lg-10">
+                    <ng-template #t let-date let-focused="focused">
+                      <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                        [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                        (mouseleave)="hoveredDate = null">
+                        {{ date.day }}
+                      </span>
+                    </ng-template>
+
+                    <input type="text" class="form-control date" (click)="hidden=!hidden" name="daterange"
+                      autocomplete="off" [(ngModel)]="selected" />
+
+                    <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+                      outsideDays="hidden" [hidden]="hidden">
+                    </ngb-datepicker>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <label for="taskname" class="col-form-label col-lg-2">Select Markets</label>
+                  <div class="col-lg-10">
+                    <select class="form-select">
+                      <option>Select Market</option>
+                      <option>Atlanta</option>
+                      <option>Georgia</option>
+                  </select>
+                  </div> 
+                </div>
+                <div class="row mb-4">
+                  <label for="taskname" class="col-form-label col-lg-2">Select Managers</label>
+                  <div class="col-lg-10">
+                    <select class="form-select">
+                      <option>Select Managers</option>
+                      <option>Manager 1</option>
+                      <option>Manager 2</option>
+                  </select>
+                  </div> 
+                </div>
+                <div class="row mb-4">
+                  <label for="taskname" class="col-form-label col-lg-2">Select Salespersons</label>
+                  <div class="col-lg-10">
+                    <select class="form-select">
+                      <option>Select Market</option>
+                      <option>Timoteo</option>
+                      <option>Cheryl</option>
+                  </select>
+                  </div> 
+                </div>
+                
+                <div class="row mb-4">
+                  <label for="taskbudget" class="col-form-label col-lg-2">Create a revenue stream to track</label>
+                  <div class="col-lg-10">
+                    <input id="taskbudget" name="taskbudget" type="text" placeholder="Enter revenue stream to track..."
+                      class="form-control">
+                  </div>
+                </div>
+                  <div class="row mb-4">
+                  <label for="taskbudget" class="col-form-label col-lg-2">Permissions</label>
+                 
+                  <div class="col-lg-10">
+                    <div class="form-check form-switch form-switch-md mb-3">
+                      <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd">
+                      <label class="form-check-label" for="SwitchCheckSizemd">Manager Enters the Data</label>
+                  </div>
+                  </div> 
+                </div>
+
+                <div class="row mb-4">
+                  <label for="taskbudget" class="col-form-label col-lg-2"></label>
+                 
+                  <div class="col-lg-10">
+                    <div class="form-check form-switch form-switch-md mb-3">
+                      <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd" checked>
+                      <label class="form-check-label" for="SwitchCheckSizemd">Sales Person Enters the Data</label>
+                  </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row justify-content-end">
+            <div class="col-lg-10">
+              <button type="submit" class="btn btn-primary">Create A Target Drive</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+
+</div> <!-- container-fluid -->
